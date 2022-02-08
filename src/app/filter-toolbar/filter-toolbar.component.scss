@@ -1,0 +1,46 @@
+:host {
+    display: block;
+  }
+  
+  .toolbar {
+    display: flex;
+    flex-direction: row;
+    height: 48px;
+    width: 100%;
+    font-weight: 400;
+    overflow: hidden;
+    button {
+      padding: 0;
+      margin: 0;
+    }
+    .search-off {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  
+    .search-on {
+      flex: 1;
+      margin-top: 10px;
+      .input-icon {
+        position: relative;
+        top: 6px;
+        font-size: 24px;
+        margin-right: 8px;
+        margin-left: 0px;
+      }
+    }
+  
+    tools {
+      color: white !important;
+    }
+  }
+  
+  .white-theme {
+    mat-toolbar {
+      background-color: white !important;
+      color: black !important;
+    }
+  }
+  

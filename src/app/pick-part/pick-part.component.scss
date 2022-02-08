@@ -1,0 +1,23 @@
+.flex-column {
+    .warn-message {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 24px;
+        color: red;
+    }
+
+    .list {
+        overflow: auto;
+        .mat-list-item {
+            height: 250px;
+            img {
+                padding-left: 90px;
+            }
+            .content {
+                padding: 20px;
+                padding-left: 50px;
+                flex: 2;
+            }
+        }
+    }
+}

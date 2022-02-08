@@ -1,0 +1,36 @@
+<div class="flex-column shadow-effect" style="height: 93%;" *ngIf="dataLoaded">
+    
+    <app-filter-toolbar [dataSource]="filterDataSource" [toolbarText]="currentPcPartBeingPicked" [filterOption]="true"></app-filter-toolbar>
+
+    <mat-divider></mat-divider>
+
+    <div class="warn-message" *ngIf="filterDataSource.filteredData.length == 0">
+        There are no PC parts to display.
+    </div>
+
+    <div class="list" *ngIf="filterDataSource.filteredData.length > 0">
+        <mat-list>
+            <mat-list-item *ngFor="let pcPart of filterDataSource.filteredData">
+
+                <img mat-card-image src="{{pcPart.image}}" (error)="updateUrlForNotFoundImage(pcPart)">
+                <div class="content flex-column">
+                   <p>{{pcPart?.name}}</p> 
+                    <p>{{pcPart?.info}}</p>
+                    <p>{{pcPart?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button [disabled]="pcPartSelectedId === pcPart.id" (click)="selectPcPart(pcPart)"  mat-raised-button color="primary" style="flex:1"> Select</button>
+
+            </mat-list-item>
+
+        </mat-list>
+    </div>
+
+    <span style="flex:1"></span>
+    <mat-divider></mat-divider>
+    <div class="flex-row" style="height: 50px; padding: 8px;">
+        <button *ngIf="currentPcPartPickerOptionIndex > 0" mat-raised-button style="flex:1; padding-right: 8px;" (click)="previous()">Previous</button>
+        <button *ngIf="currentPcPartPickerOptionIndex !== pcBuildCategory.PowerSupply" mat-raised-button style="flex:1; padding-left:8px" [disabled]="!isPcPartSelcted" (click)="next()"> Next </button>
+
+    </div>
+</div>

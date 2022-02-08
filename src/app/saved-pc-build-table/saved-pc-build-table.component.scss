@@ -1,0 +1,74 @@
+table {
+    width: 100%;
+}
+
+.warn-message {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24px;
+    color: red;
+    padding: 50px 0;
+    background-color: white;
+}
+
+mat-cell.mat-column-date,
+mat-header-cell.mat-column-date {
+    flex: 0 0 100px;
+}
+
+mat-cell.mat-column-pcCase,
+mat-header-cell.mat-column-pcCase {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-motherboard,
+mat-header-cell.mat-column-motherboard {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-cpu,
+mat-header-cell.mat-column-cpu {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-gpu,
+mat-header-cell.mat-column-gpu {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-ramMemory,
+mat-header-cell.mat-column-ramMemory {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-hardDrive,
+mat-header-cell.mat-column-hardDrive {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-ssdDrive,
+mat-header-cell.mat-column-ssdDrive {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-powerSupply,
+mat-header-cell.mat-column-powerSupply {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-price,
+mat-header-cell.mat-column-price {
+    flex: 0 0 1;
+}
+
+mat-cell.mat-column-actions,
+mat-header-cell.mat-column-actions {
+    flex: 0 0 20px;
+}
+
+mat-cell,
+mat-header-cell {
+    padding: 8px;
+}
+
+// ['date', 'pcCase', 'motherboard', 'cpu', 'gpu', 'ramMemory', 'hardDrive', 'ssdDrive', 'powerSupply', 'price', 'actions'];

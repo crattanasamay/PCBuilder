@@ -1,0 +1,23 @@
+.list{
+    overflow: auto;
+    .mat-list-item{
+        height: 150px;
+        padding: 8px;
+        mat-icon{
+            width: 40px;
+            height: 40px;
+
+            img{
+                width: 40px;
+                height: 40px;
+            }
+            
+
+            
+        }
+        .content{                
+            padding: 20px;
+            padding-left: 50px;
+        }
+    }
+}

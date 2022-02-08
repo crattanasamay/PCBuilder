@@ -1,0 +1,76 @@
+<div style="margin: 16px">
+
+    <div class="warn-message" *ngIf="pcBuilds.length == 0">
+        There are no saved PC Builds.
+    </div>
+
+    <mat-table *ngIf="pcBuilds.length > 0" [dataSource]="dataSource">
+
+        <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef> Date Saved </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.dateSaved | date:'medium'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="pcCase">
+            <mat-header-cell *matHeaderCellDef> PC Case </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.pcCase?.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="motherboard">
+            <mat-header-cell *matHeaderCellDef> Motherboard </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.motherboard?.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cpu">
+            <mat-header-cell *matHeaderCellDef> CPU </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.cpu?.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="gpu">
+            <mat-header-cell *matHeaderCellDef> GPU </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.gpu?.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ramMemory">
+            <mat-header-cell *matHeaderCellDef> RAM Memory </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.ramMemory?.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="hardDrive">
+            <mat-header-cell *matHeaderCellDef> Hard Drive </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.hardDrive?.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="ssdDrive">
+            <mat-header-cell *matHeaderCellDef> SSD Drive </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.ssdDrive?.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="powerSupply">
+            <mat-header-cell *matHeaderCellDef> Power Supply </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.powerSupply?.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element?.totalPrice | currency}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button color="primary" mat-icon-button [matMenuTriggerFor]="rowMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #rowMenu="matMenu">
+                    <button mat-menu-item (click)="goToBuild(element)">Go To Build</button>
+                    <button mat-menu-item (click)="deletePcBuild(element)">Delete</button>
+                </mat-menu>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>

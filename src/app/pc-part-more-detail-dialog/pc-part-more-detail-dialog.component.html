@@ -1,0 +1,30 @@
+<div style="display: flex;flex-direction: row;">
+    <h2 mat-dialog-title>More Details</h2>
+    <span style="flex:1"></span>
+    <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <div style="height: 100%;">
+        <div class="content flex-row">
+            <img mat-card-image src="{{currentPcPart.image}}" (error)="updateUrlForNotFoundImage()" style="padding-right: 10px;">
+            <div class="flex-column" style="justify-content: center;">
+                <p>{{currentPcPart?.name}}</p>
+                <p>{{currentPcPart?.info}}</p>
+                <p>{{currentPcPart?.price | currency}}</p>
+            </div>
+        </div>
+        <div>
+            <h2>Description</h2>
+            <p>{{currentPcPart?.desc}}</p>
+        </div>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+

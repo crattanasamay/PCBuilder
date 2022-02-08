@@ -1,0 +1,25 @@
+<mat-toolbar class="toolbar" color="primary">
+
+  <span *ngIf="!searchOn" class="search-off">
+    {{_toolbarText}}
+  </span>
+
+    <mat-form-field *ngIf="searchOn" class="search-on" appearance="none">
+      <mat-icon class="input-icon" matPrefix>search</mat-icon>
+      <input #searchInput matInput (keyup)="applyFilter($event.target.value)">
+    </mat-form-field>
+
+
+
+    <div class="search-toggle" *ngIf="filterOption">
+      <button mat-icon-button *ngIf="!searchOn" (click)="search()">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="searchOn" (click)="searchOff()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+
+    <ng-content select="extra-tools"></ng-content>
+ 
+</mat-toolbar>

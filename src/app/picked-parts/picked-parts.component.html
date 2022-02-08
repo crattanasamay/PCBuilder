@@ -1,0 +1,204 @@
+<div class="flex-column shadow-effect" style="height: 93%;">
+    <app-filter-toolbar [toolbarText]="'Your Build Computer'" [filterOption]="false">
+        <extra-tools>
+
+            <button [disabled]="!atLeastOneSelceted()" mat-icon-button [matMenuTriggerFor]="extraToolsMenu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #extraToolsMenu="matMenu">
+                <button mat-menu-item (click)="saveBuild()">Save As New</button>
+                <button *ngIf="pcBuild" mat-menu-item (click)="saveUpdate()">Update</button>
+            </mat-menu>
+
+        </extra-tools>
+    </app-filter-toolbar>
+    <mat-divider></mat-divider>
+    <div class="list">
+        <mat-list>
+            <mat-list-item class="shadow-effect">
+                <mat-icon>
+                    <img src="../../assets/icons/pc-tower.svg">
+                </mat-icon>
+
+                <div class="content flex-column">
+                    <p>{{pcCase?.name}}</p>
+                    <p>{{pcCase?.info}}</p>
+                    <p>{{pcCase?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button *ngIf="pcCase" mat-icon-button color="primary" [matMenuTriggerFor]="pcCaseMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #pcCaseMenu="matMenu">
+                    <button mat-menu-item (click)="moreDetails(pcCase)">More Details</button>
+                    <button mat-menu-item (click)="goToCategory(pcBuildCategory.PcCase, pcCase.id)">Go To Category</button>
+                    <button mat-menu-item (click)="deselect(pcBuildCategory.PcCase)">Deselect</button>
+                </mat-menu>
+
+            </mat-list-item>
+
+            <mat-list-item class="shadow-effect">
+                <mat-icon>
+                    <img src="../../assets/icons/motherboard.svg">
+                </mat-icon>
+
+                <div class="content flex-column">
+                    <p>{{motherboard?.name}}</p>
+                    <p>{{motherboard?.info}}</p>
+                    <p>{{motherboard?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button *ngIf="motherboard" mat-icon-button color="primary" [matMenuTriggerFor]="motherboardMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #motherboardMenu="matMenu">
+                    <button mat-menu-item (click)="moreDetails(motherboard)">More Details</button>
+                    <button mat-menu-item (click)="goToCategory(pcBuildCategory.Motherboard, motherboard.id)">Go To Category</button>
+                    <span  matTooltip="Deselecting motherboard could lead to have compatibility issues.">
+                        <button mat-menu-item [disabled]="true" (click)="deselect(pcBuildCategory.Motherboard)">Deselect</button>
+                    </span>
+                </mat-menu>
+            </mat-list-item>
+
+            <mat-list-item class="shadow-effect">
+                <mat-icon>
+                    <img src="../../assets/icons/cpu.svg">
+                </mat-icon>
+
+                <div class="content flex-column">
+                    <p>{{cpu?.name}}</p>
+                    <p>{{cpu?.info}}</p>
+                    <p>{{cpu?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button *ngIf="cpu" mat-icon-button color="primary" [matMenuTriggerFor]="CPUMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #CPUMenu="matMenu">
+                    <button mat-menu-item (click)="moreDetails(motherboard)">More Details</button>
+                    <button mat-menu-item (click)="goToCategory(pcBuildCategory.CPU, cpu.id)">Go To Category</button>
+                    <button mat-menu-item (click)="deselect(pcBuildCategory.CPU)">Deselect</button>
+                </mat-menu>
+
+            </mat-list-item>
+
+            <mat-list-item class="shadow-effect">
+                <mat-icon>
+                    <img src="../../assets/icons/gpu.svg">
+                </mat-icon>
+
+                <div class="content flex-column">
+                    <p>{{gpu?.name}}</p>
+                    <p>{{gpu?.info}}</p>
+                    <p>{{gpu?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button *ngIf="gpu" mat-icon-button color="primary" [matMenuTriggerFor]="GPUMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #GPUMenu="matMenu">
+                    <button mat-menu-item (click)="moreDetails(gpu)">More Details</button>
+                    <button mat-menu-item (click)="goToCategory(pcBuildCategory.GPU, gpu.id)">Go To Category</button>
+                    <button mat-menu-item (click)="deselect(pcBuildCategory.GPU)">Deselect</button>
+                </mat-menu>
+
+            </mat-list-item>
+
+            <mat-list-item class="shadow-effect">
+                <mat-icon>
+                    <img src="../../assets/icons/ram-memory.svg">
+                </mat-icon>
+
+                <div class="content flex-column">
+                    <p>{{ramMemory?.name}}</p>
+                    <p>{{ramMemory?.info}}</p>
+                    <p>{{ramMemory?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button *ngIf="ramMemory" mat-icon-button color="primary" [matMenuTriggerFor]="ramMemoryMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #ramMemoryMenu="matMenu">
+                    <button mat-menu-item (click)="moreDetails(ramMemory)">More Details</button>
+                    <button mat-menu-item (click)="goToCategory(pcBuildCategory.RAMMemory, ramMemory.id)">Go To Category</button>
+                    <button mat-menu-item (click)="deselect(pcBuildCategory.RAMMemory)">Deselect</button>
+                </mat-menu>
+
+            </mat-list-item>
+
+            <mat-list-item class="shadow-effect">
+                <mat-icon>
+                    <img src="../../assets/icons/hard-drive.svg">
+                </mat-icon>
+
+                <div class="content flex-column">
+                    <p>{{hardDrive?.name}}</p>
+                    <p>{{hardDrive?.info}}</p>
+                    <p>{{hardDrive?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button *ngIf="hardDrive" mat-icon-button color="primary" [matMenuTriggerFor]="hardDriveMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #hardDriveMenu="matMenu">
+                    <button mat-menu-item (click)="moreDetails(hardDrive)">More Details</button>
+                    <button mat-menu-item (click)="goToCategory(pcBuildCategory.HardDrive, hardDrive.id)">Go To Category</button>
+                    <button mat-menu-item (click)="deselect(pcBuildCategory.HardDrive)">Deselect</button>
+                </mat-menu>
+
+            </mat-list-item>
+
+            <mat-list-item class="shadow-effect">
+                <mat-icon>
+                    <img src="../../assets/icons/ssd-drive.svg">
+                </mat-icon>
+
+                <div class="content flex-column">
+                    <p>{{ssdDrive?.name}}</p>
+                    <p>{{ssdDrive?.info}}</p>
+                    <p>{{ssdDrive?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button *ngIf="ssdDrive" mat-icon-button color="primary" [matMenuTriggerFor]="ssdMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #ssdMenu="matMenu">
+                    <button mat-menu-item (click)="moreDetails(ssdDrive)">More Details</button>
+                    <button mat-menu-item (click)="goToCategory(pcBuildCategory.SSDDrive, ssdDrive.id)">Go To Category</button>
+                    <button mat-menu-item (click)="deselect(pcBuildCategory.SSDDrive)">Deselect</button>
+                </mat-menu>
+
+            </mat-list-item>
+
+            <mat-list-item class="shadow-effect">
+                <mat-icon>
+                    <img src="../../assets/icons/power-supply.svg">
+                </mat-icon>
+
+                <div class="content flex-column">
+                    <p>{{powerSupply?.name}}</p>
+                    <p>{{powerSupply?.info}}</p>
+                    <p>{{powerSupply?.price | currency}}</p>
+                </div>
+                <span style="flex:1"></span>
+                <button *ngIf="powerSupply" mat-icon-button color="primary" [matMenuTriggerFor]="powerSupplyMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #powerSupplyMenu="matMenu">
+                    <button mat-menu-item (click)="moreDetails(powerSupply)">More Details</button>
+                    <button mat-menu-item (click)="goToCategory(pcBuildCategory.PowerSupply, powerSupply.id)">Go To Category</button>
+                    <button mat-menu-item (click)="deselect(pcBuildCategory.PowerSupply)">Deselect</button>
+                </mat-menu>
+
+            </mat-list-item>
+
+        </mat-list>
+
+
+    </div>
+    <mat-divider></mat-divider>
+    <div class="flex-row" style="height: 50px; padding: 8px;">
+        <h2>Total Price: {{totalPrice|currency}}</h2>
+
+    </div>
+</div>

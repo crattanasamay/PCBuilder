@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Pc Builder</span>
+      <span class="spacer"></span>
+      <button mat-button (click)="goHome()">
+        Home
+      </button>
+      <button mat-button (click)="goToSavedPcBuilds()">
+        Saved PC Builds
+      </button>
+      <button mat-button (click)="goToPcBuilder()">
+        Build Your PC
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+ <router-outlet></router-outlet>
+
